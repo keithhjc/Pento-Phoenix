@@ -1,5 +1,6 @@
 defmodule PentoWeb.WrongLive do
   use Phoenix.LiveView, layout: {PentoWeb.LayoutView, "live.html"}
+  import PentoWeb.Helpers.IconHelper
 
   def mount(_params, _session, socket) do
     {:ok, assign(
@@ -77,6 +78,10 @@ defmodule PentoWeb.WrongLive do
     <h1>Your score: <span class="pento-score"><%= @score %></span></h1>
     <h2>Answer: <%= @answer %></h2>
     <h2><%= @message %></h2>
+
+    # Render SVG
+    <%= PentoWeb.Helpers.IconHelper.icon_tag(@socket, "active", class: "something") %>
+    <%= icon_tag(@socket, "active", class: "something") %>
     <h2>It's <%= @current_time %></h2>
     <%= if @correct_answer do %>
       <%= live_patch "Restart", to: Routes.live_path(@socket, PentoWeb.WrongLive) %>

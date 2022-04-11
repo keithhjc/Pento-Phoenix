@@ -79,6 +79,13 @@ defmodule PentoWeb.Router do
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+
+    # example to group live views
+    # live_session :default, root_layout: {PentoWeb.LayoutView, "admin.html"} do
+    #   live "/game-sales", Admin.GameSalesLive
+    #   live "/survey-results", Admin.SurveyResultsLive
+      # other admin routes
+      # end
   end
 
   scope "/", PentoWeb do
