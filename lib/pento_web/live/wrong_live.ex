@@ -55,30 +55,6 @@ defmodule PentoWeb.WrongLive do
 
   def render(assigns) do
     ~H"""
-    <style>
-      .pento-score {
-        # color: red;
-      }
-      .guess-box {
-        width: 140px;
-        font-family: 'Roboto', sans-serif;
-        font-size: 31px;
-        color: #000;
-        # border: 1px solid #7999F0;
-        transition: all 0.3s ease 0s;
-        background-color: #ccdbfd;
-        padding: 15px;
-        border-radius: 45px;
-        box-shadow:  0px 8px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .guess-box:hover {
-        background-color: #abc4ff;
-        box-shadow: 0px 15px 20px rgba(133, 188, 243, 0.4);
-        color: white;
-        transform: translateY(-7px);
-      }
-    </style>
     <h1>Your score: <span class="pento-score"><%= @score %></span></h1>
     <h2>Answer: <%= @answer %></h2>
     <h2><%= @message %></h2>
