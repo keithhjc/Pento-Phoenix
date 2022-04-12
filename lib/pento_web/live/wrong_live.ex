@@ -1,14 +1,16 @@
 defmodule PentoWeb.WrongLive do
   use Phoenix.LiveView, layout: {PentoWeb.LayoutView, "live.html"}
   import PentoWeb.Helpers.IconHelper
+  alias Pento.Accounts;
 
-  def mount(_params, _session, socket) do
+  def mount(_params, session, socket) do
     {:ok,
      assign(
        socket,
        score: 0,
        message: "Make a guess:",
        current_time: time(),
+       session_id: session["live_socket_id"],
        answer: :rand.uniform(10) |> to_string(),
        correct_answer: false
      )}
@@ -68,10 +70,14 @@ defmodule PentoWeb.WrongLive do
     <% else %>
     <h2>
     <div class = "guess-boxes">
-    <%= for n <- 0..9 do %>
-    <a class="guess-box" href="#" phx-click="guess" phx-value-number= {n} ><%= n %></a>
-    <% end %>
+      <%= for n <- 0..9 do %>
+        <a class="guess-box" href="#" phx-click="guess" phx-value-number= {n} ><%= n %></a>
+      <% end %>
     </div>
+    <pre>
+      <%= @current_user.email %>
+      <%= @session_id %>
+    </pre>
     </h2>
     <% end %>
     """
