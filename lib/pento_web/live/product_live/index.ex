@@ -6,7 +6,12 @@ defmodule PentoWeb.ProductLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, :products, list_products())}
+    # {:ok, assign(socket, :products, list_products())}
+    IO.inspect("Index Mount called")
+
+    {:ok,
+     socket
+     |> assign(:products, list_products())}
   end
 
   @impl true

@@ -5,6 +5,7 @@ defmodule PentoWeb.ProductLive.Show do
 
   @impl true
   def mount(_params, _session, socket) do
+    IO.inspect("Show Mount called")
     {:ok, socket}
   end
 
