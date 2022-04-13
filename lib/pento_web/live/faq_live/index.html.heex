@@ -31,10 +31,12 @@
         <td><%= faq.votes %></td>
 
         <td>
-          <span><%= link "Like", to: "#", phx_click: "like", phx_value_id: faq.id %></span>
+          <span><%= link icon_tag(@socket, "like", class: "like-button"), to: "#", phx_click: "like", phx_value_id: faq.id %></span>
+          <!--
           <span><%= live_redirect "Show", to: Routes.faq_show_path(@socket, :show, faq) %></span>
           <span><%= live_patch "Edit", to: Routes.faq_index_path(@socket, :edit, faq) %></span>
           <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: faq.id, data: [confirm: "Are you sure?"] %></span>
+          -->
         </td>
       </tr>
     <% end %>

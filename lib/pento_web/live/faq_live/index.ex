@@ -1,6 +1,8 @@
 defmodule PentoWeb.FaqLive.Index do
   use PentoWeb, :live_view
 
+  import PentoWeb.Helpers.IconHelper
+
   alias Pento.FAQ
   alias Pento.FAQ.Faq
 
