@@ -1,3 +1,4 @@
+<!-- log in page -->
 <h1>Log in</h1>
 
 <.form let={f} for={@conn} action={Routes.user_session_path(@conn, :create)} as={:user}>
@@ -7,8 +8,11 @@
     </div>
   <% end %>
 
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
+  <%= label f, :username %>
+  <%= text_input f, :username, required: true %>
+
+  <% label f, :email %>
+  <% email_input f, :email, required: false %>
 
   <%= label f, :password %>
   <%= password_input f, :password, required: true %>
