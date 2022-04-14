@@ -40,6 +40,19 @@ defmodule PentoWeb.FaqLive.FormComponent do
     end
   end
 
+  defp save_faq(socket, :answer, faq_params) do
+    case FAQ.answer_faq(socket.assigns.faq, faq_params) do
+      {:ok, _faq} ->
+        {:noreply,
+         socket
+         |> put_flash(:info, "Faq updated successfully")
+         |> push_redirect(to: socket.assigns.return_to)}
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        {:noreply, assign(socket, :changeset, changeset)}
+    end
+  end
+
   defp save_faq(socket, :new, faq_params) do
     case FAQ.create_faq(faq_params) do
       {:ok, _faq} ->

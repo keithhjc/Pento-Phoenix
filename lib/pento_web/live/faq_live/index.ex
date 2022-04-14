@@ -16,9 +16,10 @@ defmodule PentoWeb.FaqLive.Index do
     {:noreply, apply_action(socket, socket.assigns.live_action, params)}
   end
 
-  defp apply_action(socket, :like, %{"id" => id}) do
-    IO.inspect("liked")
+  defp apply_action(socket, :answer, %{"id" => id}) do
     socket
+    |> assign(:page_title, "Reply Faq")
+    |> assign(:faq, FAQ.get_faq!(id))
   end
 
   defp apply_action(socket, :edit, %{"id" => id}) do

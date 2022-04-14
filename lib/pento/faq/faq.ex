@@ -22,4 +22,11 @@ defmodule Pento.FAQ.Faq do
     |> cast(attrs, [:votes])
     |> validate_required([:votes])
   end
+
+  def answer_changeset(faq, attrs) do
+    faq
+    |> cast(attrs, [:answer])
+    |> validate_required(:answer)
+    |> validate_length(:answer, min: 5)
+  end
 end

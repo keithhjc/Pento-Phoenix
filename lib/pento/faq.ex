@@ -18,7 +18,7 @@ defmodule Pento.FAQ do
 
   """
   def list_faqs do
-    Repo.all(Faq)
+    Repo.all(from f in Faq, order_by: [desc: f.id])
   end
 
   @doc """
@@ -105,6 +105,12 @@ defmodule Pento.FAQ do
   def upvote_faq(%Faq{} = faq) do
     faq
     |> Faq.upvote_changeset(%{votes: faq.votes + 1})
+    |> Repo.update()
+  end
+
+  def answer_faq(%Faq{} = faq, attrs \\ %{}) do
+    faq
+    |> Faq.answer_changeset(attrs)
     |> Repo.update()
   end
 end
