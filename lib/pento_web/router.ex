@@ -97,6 +97,7 @@ defmodule PentoWeb.Router do
 
     live_session :default, on_mount: PentoWeb.UserAuthLive do
       live "/guess", WrongLive
+      live "/promo", PromoLive
     end
 
     # example to group live views
