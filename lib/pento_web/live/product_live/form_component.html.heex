@@ -40,8 +40,12 @@
       <% end %>
 
       <button phx-target="{ @myself }"
-phx-click="cancel-upload" phx-value-ref="{ entry.ref }">cancel</button>
+        phx-click="cancel-upload" phx-value-ref="{ entry.ref }">cancel</button>
     <% end %>
+
+    <p class="alert alert-info" role="alert"
+      phx-click="lv:clear-flash"
+      phx-value-key="info"><%= live_flash(@flash, :info) %></p>
   
     <div>
       <%= submit "Save", phx_disable_with: "Saving..." %>
