@@ -77,6 +77,8 @@ defmodule PentoWeb.Router do
   scope "/", PentoWeb do
     pipe_through [:browser, :require_authenticated_user]
 
+    resources "/roles", RoleController
+
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
@@ -99,6 +101,8 @@ defmodule PentoWeb.Router do
     live_session :default, on_mount: PentoWeb.UserAuthLive do
       live "/guess", WrongLive
       live "/promo", PromoLive
+
+      live "/admin-dashboard", Admin.DashboardLive
     end
 
     # example to group live views

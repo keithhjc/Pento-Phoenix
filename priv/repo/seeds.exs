@@ -12,6 +12,7 @@
 
 # Initalizing some products
 alias Pento.Catalog
+alias Pento.UserManagement
 
 products = [
   %{
@@ -23,7 +24,8 @@ products = [
   %{
     name: "Tic-Tac-Toe",
     description: "The game of Xs and Os",
-    sku: 11_121_314, unit_price: 3.00
+    sku: 11_121_314,
+    unit_price: 3.00
   },
   %{
     name: "Table Tennis",
@@ -35,4 +37,23 @@ products = [
 
 Enum.each(products, fn product ->
   Catalog.create_product(product)
-  end)
+end)
+
+roles = [
+  %{
+    title: "Admin",
+    description: "With great power comes great responsibility"
+  },
+  %{
+    title: "User",
+    description: "No power no worries"
+  },
+  %{
+    title: "Guest",
+    description: "Just passing by"
+  }
+]
+
+Enum.each(roles, fn role ->
+  UserManagement.create_role(role)
+end)
