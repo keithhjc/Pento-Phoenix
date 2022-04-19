@@ -99,6 +99,10 @@ defmodule Pento.Accounts do
     User.registration_changeset(user, attrs, hash_password: false)
   end
 
+  def list_users() do
+    Repo.all(User)
+  end
+
   ## Settings
 
   @doc """

@@ -1,0 +1,36 @@
+<h1>Users</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.faq_index_path(@socket, :index)}>
+    <.live_component
+      module={PentoWeb.FaqLive.FormComponent}
+      id={@faq.id || :new}
+      title={@page_title}
+      action={@live_action}
+      faq={@faq}
+      return_to={Routes.faq_index_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="users">
+    <%= for user <- @users do %>
+      <tr id={"user-#{user.id}"}>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= user.hashed_password %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Faq", to: Routes.faq_index_path(@socket, :new) %></span>
